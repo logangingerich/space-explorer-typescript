@@ -5,8 +5,10 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.402.12
   generationVersion: 2.422.15
-  releaseVersion: 0.1.0
-  configChecksum: 448cd45c18f17cb77a82201579294190
+  releaseVersion: 0.1.1
+  configChecksum: f577ac3a734a35d402f2794f79be31b9
+  repoURL: https://github.com/logangingerich/space-explorer-typescript.git
+  installationURL: https://github.com/logangingerich/space-explorer-typescript
 features:
   typescript:
     additionalDependencies: 0.1.0
