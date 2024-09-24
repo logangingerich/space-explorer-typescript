@@ -1,0 +1,29 @@
+speakeasyVersion: 1.402.12
+sources:
+    SpaceExplorer-OAS:
+        sourceNamespace: space-explorer-oas
+        sourceRevisionDigest: sha256:63a1366462752d780a364e0e758b0d3fa9096010f9784ecee30c9c5d8737fc81
+        sourceBlobDigest: sha256:fd7d05fb275dc1f3f91bccc2b8450098875d1b2694322301b50343acda8824b0
+        tags:
+            - latest
+targets:
+    space-explorer:
+        source: SpaceExplorer-OAS
+        sourceNamespace: space-explorer-oas
+        sourceRevisionDigest: sha256:63a1366462752d780a364e0e758b0d3fa9096010f9784ecee30c9c5d8737fc81
+        sourceBlobDigest: sha256:fd7d05fb275dc1f3f91bccc2b8450098875d1b2694322301b50343acda8824b0
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        SpaceExplorer-OAS:
+            inputs:
+                - location: openapi.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/loganinc/loganinc/space-explorer-oas
+    targets:
+        space-explorer:
+            target: typescript
+            source: SpaceExplorer-OAS

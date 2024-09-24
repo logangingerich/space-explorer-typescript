@@ -1,0 +1,14 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    SpaceExplorer-OAS:
+        inputs:
+            - location: openapi.yaml
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/loganinc/loganinc/space-explorer-oas
+targets:
+    space-explorer:
+        target: typescript
+        source: SpaceExplorer-OAS

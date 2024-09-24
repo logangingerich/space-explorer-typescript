@@ -1,0 +1,196 @@
+lockVersion: 2.0.0
+id: 667d49a1-a40f-4a93-af11-29914386485a
+management:
+  docChecksum: 73a8d54c1f1bc4bbfb1760891a810230
+  docVersion: 1.0.0
+  speakeasyVersion: 1.402.12
+  generationVersion: 2.422.15
+  releaseVersion: 0.1.0
+  configChecksum: 448cd45c18f17cb77a82201579294190
+features:
+  typescript:
+    additionalDependencies: 0.1.0
+    constsAndDefaults: 0.1.11
+    core: 3.17.6
+    defaultEnabledRetries: 0.1.0
+    devContainers: 2.90.0
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.1.1
+    globalSecurity: 2.82.11
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.4
+    groups: 2.81.2
+    nameOverrides: 2.81.2
+    responseFormat: 0.2.3
+    retries: 2.83.0
+    sdkHooks: 0.1.0
+generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .eslintrc.cjs
+  - .gitattributes
+  - .npmignore
+  - CONTRIBUTING.md
+  - FUNCTIONS.md
+  - RUNTIMES.md
+  - USAGE.md
+  - docs/lib/utils/retryconfig.md
+  - docs/models/components/astronaut.md
+  - docs/models/components/eventtypes.md
+  - docs/models/components/mission.md
+  - docs/models/components/newastronaut.md
+  - docs/models/components/newmission.md
+  - docs/models/components/newmissionstatus.md
+  - docs/models/components/security.md
+  - docs/models/components/status.md
+  - docs/models/components/updatemission.md
+  - docs/models/components/updatemissionstatus.md
+  - docs/models/components/webhookregistration.md
+  - docs/models/errors/errort.md
+  - docs/models/operations/deletemissionrequest.md
+  - docs/models/operations/getmissionrequest.md
+  - docs/models/operations/listmissionsrequest.md
+  - docs/models/operations/listmissionsresponse.md
+  - docs/models/operations/listmissionsresponsebody.md
+  - docs/models/operations/status.md
+  - docs/models/operations/updatemissionrequest.md
+  - docs/sdks/astronauts/README.md
+  - docs/sdks/missions/README.md
+  - docs/sdks/spaceexplorer/README.md
+  - docs/sdks/webhooks/README.md
+  - jsr.json
+  - package.json
+  - src/core.ts
+  - src/funcs/astronautsAdd.ts
+  - src/funcs/astronautsList.ts
+  - src/funcs/missionsCreate.ts
+  - src/funcs/missionsDelete.ts
+  - src/funcs/missionsGet.ts
+  - src/funcs/missionsList.ts
+  - src/funcs/missionsUpdate.ts
+  - src/funcs/webhooksRegisterMissionUpdates.ts
+  - src/hooks/hooks.ts
+  - src/hooks/index.ts
+  - src/hooks/types.ts
+  - src/index.ts
+  - src/lib/base64.ts
+  - src/lib/config.ts
+  - src/lib/dlv.ts
+  - src/lib/encodings.ts
+  - src/lib/env.ts
+  - src/lib/files.ts
+  - src/lib/http.ts
+  - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
+  - src/lib/matchers.ts
+  - src/lib/primitives.ts
+  - src/lib/retries.ts
+  - src/lib/schemas.ts
+  - src/lib/sdks.ts
+  - src/lib/security.ts
+  - src/lib/url.ts
+  - src/models/components/astronaut.ts
+  - src/models/components/index.ts
+  - src/models/components/mission.ts
+  - src/models/components/newastronaut.ts
+  - src/models/components/newmission.ts
+  - src/models/components/security.ts
+  - src/models/components/updatemission.ts
+  - src/models/components/webhookregistration.ts
+  - src/models/errors/error.ts
+  - src/models/errors/httpclienterrors.ts
+  - src/models/errors/index.ts
+  - src/models/errors/sdkerror.ts
+  - src/models/errors/sdkvalidationerror.ts
+  - src/models/operations/deletemission.ts
+  - src/models/operations/getmission.ts
+  - src/models/operations/index.ts
+  - src/models/operations/listmissions.ts
+  - src/models/operations/updatemission.ts
+  - src/sdk/astronauts.ts
+  - src/sdk/index.ts
+  - src/sdk/missions.ts
+  - src/sdk/sdk.ts
+  - src/sdk/webhooks.ts
+  - src/types/blobs.ts
+  - src/types/constdatetime.ts
+  - src/types/enums.ts
+  - src/types/fp.ts
+  - src/types/index.ts
+  - src/types/operations.ts
+  - src/types/rfcdate.ts
+  - src/types/streams.ts
+  - tsconfig.json
+examples:
+  listMissions:
+    speakeasy-default-list-missions:
+      responses:
+        "200":
+          application/json: {"missions": []}
+        "401":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  createMission:
+    speakeasy-default-create-mission:
+      requestBody:
+        application/json: {"name": "<value>", "status": "ongoing", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+      responses:
+        "201":
+          application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+        "400":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  getMission:
+    speakeasy-default-get-mission:
+      parameters:
+        path:
+          missionId: "mission_12345"
+        header: {}
+      responses:
+        "200":
+          application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+        "401":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  updateMission:
+    speakeasy-default-update-mission:
+      parameters:
+        path:
+          missionId: "mission_12345"
+      requestBody:
+        application/json: {"crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+      responses:
+        "200":
+          application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+        "400":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  deleteMission:
+    speakeasy-default-delete-mission:
+      parameters:
+        path:
+          missionId: "mission_12345"
+      responses:
+        "401":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  listAstronauts:
+    speakeasy-default-list-astronauts:
+      responses:
+        "200":
+          application/json: [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]
+        "401":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  addAstronaut:
+    speakeasy-default-add-astronaut:
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "201":
+          application/json: {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}
+        "400":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+  registerMissionUpdatesWebhook:
+    speakeasy-default-register-mission-updates-webhook:
+      requestBody:
+        application/json: {"url": "https://yourapp.com/webhooks/mission-updates", "eventTypes": ["missionDeleted", "missionDeleted"]}
+      responses:
+        "400":
+          application/json: {"code": 400, "message": "Invalid request parameters"}

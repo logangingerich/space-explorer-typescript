@@ -1,0 +1,356 @@
+openapi: 3.0.3
+info:
+  title: Space Explorer API
+  version: 1.0.0
+  description: An API to explore and manage space missions, astronauts, and planets.
+servers:
+  - url: https://api.space-explorer.com/v1
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /missions:
+    get:
+      summary: List all missions
+      operationId: listMissions
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [planned, ongoing, completed]
+          description: Filter missions by status
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Page number for pagination
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+            default: 10
+          description: Number of items per page
+      responses:
+        '200':
+          description: A list of missions
+          headers:
+            X-Total-Count:
+              description: Total number of missions
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  missions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Mission'
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+    post:
+      summary: Create a new mission
+      operationId: createMission
+      requestBody:
+        description: Mission object to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMission'
+      responses:
+        '201':
+          description: Mission created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /missions/{missionId}:
+    get:
+      summary: Get mission details
+      operationId: getMission
+      parameters:
+        - $ref: '#/components/parameters/missionId'
+        - in: header
+          name: Accept-Language
+          schema:
+            type: string
+          description: Language for the response
+      responses:
+        '200':
+          description: Mission details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+    put:
+      summary: Update a mission
+      operationId: updateMission
+      parameters:
+        - $ref: '#/components/parameters/missionId'
+      requestBody:
+        description: Updated mission object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMission'
+      responses:
+        '200':
+          description: Mission updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+    delete:
+      summary: Delete a mission
+      operationId: deleteMission
+      parameters:
+        - $ref: '#/components/parameters/missionId'
+      responses:
+        '204':
+          description: Mission deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /astronauts:
+    get:
+      summary: List all astronauts
+      operationId: listAstronauts
+      responses:
+        '200':
+          description: A list of astronauts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Astronaut'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+    post:
+      summary: Add a new astronaut
+      operationId: addAstronaut
+      requestBody:
+        description: Astronaut object to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAstronaut'
+      responses:
+        '201':
+          description: Astronaut added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Astronaut'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /webhooks/mission-updates:
+    post:
+      summary: Register for mission updates
+      operationId: registerMissionUpdatesWebhook
+      requestBody:
+        description: Webhook registration details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRegistration'
+      responses:
+        '202':
+          description: Webhook registered successfully
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  parameters:
+    missionId:
+      name: missionId
+      in: path
+      required: true
+      description: ID of the mission
+      schema:
+        type: string
+        example: 'mission_12345'
+
+  schemas:
+    Mission:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'mission_12345'
+        name:
+          type: string
+          example: 'Mars Exploration'
+        status:
+          type: string
+          enum: [planned, ongoing, completed]
+          example: 'ongoing'
+        launchDate:
+          type: string
+          format: date-time
+          example: '2024-07-16T19:20:30+01:00'
+        crew:
+          type: array
+          items:
+            $ref: '#/components/schemas/Astronaut'
+      required:
+        - id
+        - name
+        - status
+
+    NewMission:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum: [planned, ongoing, completed]
+        launchDate:
+          type: string
+          format: date-time
+        crew:
+          type: array
+          items:
+            $ref: '#/components/schemas/Astronaut'
+      required:
+        - name
+        - status
+
+    UpdateMission:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum: [planned, ongoing, completed]
+        launchDate:
+          type: string
+          format: date-time
+        crew:
+          type: array
+          items:
+            $ref: '#/components/schemas/Astronaut'
+      description: Fields to update in a mission
+
+    Astronaut:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'astro_67890'
+        name:
+          type: string
+          example: 'Jane Doe'
+        role:
+          type: string
+          example: 'Commander'
+      required:
+        - id
+        - name
+
+    NewAstronaut:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+      required:
+        - name
+
+    WebhookRegistration:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: 'https://yourapp.com/webhooks/mission-updates'
+        eventTypes:
+          type: array
+          items:
+            type: string
+            enum: [missionCreated, missionUpdated, missionDeleted]
+      required:
+        - url
+        - eventTypes
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: 'Invalid request parameters'
+      required:
+        - code
+        - message
+
+  responses:
+    BadRequestError:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    UnauthorizedError:
+      description: Unauthorized access
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFoundError:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

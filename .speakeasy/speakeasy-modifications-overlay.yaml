@@ -1,0 +1,89 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Modifications
+  version: 0.0.2
+  x-speakeasy-metadata:
+    after: ""
+    before: ""
+    type: speakeasy-modifications
+actions:
+  - target: $["paths"]["/webhooks/mission-updates"]["post"]
+    update:
+      x-speakeasy-group: webhooks
+      x-speakeasy-name-override: registerMissionUpdates
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.registerMissionUpdatesWebhook()
+      after: sdk.webhooks.registerMissionUpdates()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/missions"]["get"]
+    update:
+      x-speakeasy-group: missions
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.listMissions()
+      after: sdk.missions.list()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/missions"]["post"]
+    update:
+      x-speakeasy-group: missions
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.createMission()
+      after: sdk.missions.create()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/missions/{missionId}"]["get"]
+    update:
+      x-speakeasy-group: missions
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.getMission()
+      after: sdk.missions.get()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/missions/{missionId}"]["put"]
+    update:
+      x-speakeasy-group: missions
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.updateMission()
+      after: sdk.missions.update()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/missions/{missionId}"]["delete"]
+    update:
+      x-speakeasy-group: missions
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.deleteMission()
+      after: sdk.missions.delete()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/astronauts"]["get"]
+    update:
+      x-speakeasy-group: astronauts
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.listAstronauts()
+      after: sdk.astronauts.list()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
+  - target: $["paths"]["/astronauts"]["post"]
+    update:
+      x-speakeasy-group: astronauts
+      x-speakeasy-name-override: add
+    x-speakeasy-metadata:
+      type: method-name
+      before: sdk.<no_group>.addAstronaut()
+      after: sdk.astronauts.add()
+      reviewed_at: 1727212523940
+      created_at: 1727212520085
