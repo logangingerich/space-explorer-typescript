@@ -7,6 +7,8 @@ management:
   generationVersion: 2.422.22
   releaseVersion: 0.1.1
   configChecksum: f577ac3a734a35d402f2794f79be31b9
+  repoURL: https://github.com/logangingerich/space-explorer-typescript.git
+  installationURL: https://github.com/logangingerich/space-explorer-typescript
 features:
   typescript:
     additionalDependencies: 0.1.0

@@ -6,6 +6,7 @@ sources:
         sourceBlobDigest: sha256:e94420b8a3e9eba86e7f2dae7be877c0d64175fad299c36d7bc2bd556f97de71
         tags:
             - latest
+            - main
 targets:
     space-explorer:
         source: SpaceExplorer-OAS
