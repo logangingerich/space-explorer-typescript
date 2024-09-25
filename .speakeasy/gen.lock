@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.402.14
   generationVersion: 2.422.22
-  releaseVersion: 0.1.1
-  configChecksum: f577ac3a734a35d402f2794f79be31b9
+  releaseVersion: 0.1.2
+  configChecksum: 6b9f5fa76b76265e3e190587ee16cd3f
   repoURL: https://github.com/logangingerich/space-explorer-typescript.git
   installationURL: https://github.com/logangingerich/space-explorer-typescript
   published: true
@@ -153,7 +153,7 @@ examples:
           application/json: {"code": 400, "message": "Invalid request parameters"}
     terraformExample:
       requestBody:
-        application/json: {"name": "<value>", "status": "ongoing", "crew": []}
+        application/json: {"name": "<value>", "status": "ongoing", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
       responses:
         "201":
           application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": []}
