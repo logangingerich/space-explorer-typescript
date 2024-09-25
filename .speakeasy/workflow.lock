@@ -2,16 +2,15 @@ speakeasyVersion: 1.402.14
 sources:
     SpaceExplorer-OAS:
         sourceNamespace: space-explorer-oas
-        sourceRevisionDigest: sha256:04c1662982b9d3d07f12296387baae48cc0cc9ed26168e88bb06c43cfe08a75d
+        sourceRevisionDigest: sha256:8baa8eb14673f35b556a76cbae0e8e6a28b31c13c6627817a1224da5303eec0c
         sourceBlobDigest: sha256:e94420b8a3e9eba86e7f2dae7be877c0d64175fad299c36d7bc2bd556f97de71
         tags:
             - latest
-            - main
 targets:
     space-explorer:
         source: SpaceExplorer-OAS
         sourceNamespace: space-explorer-oas
-        sourceRevisionDigest: sha256:04c1662982b9d3d07f12296387baae48cc0cc9ed26168e88bb06c43cfe08a75d
+        sourceRevisionDigest: sha256:8baa8eb14673f35b556a76cbae0e8e6a28b31c13c6627817a1224da5303eec0c
         sourceBlobDigest: sha256:e94420b8a3e9eba86e7f2dae7be877c0d64175fad299c36d7bc2bd556f97de71
 workflow:
     workflowVersion: 1.0.0
@@ -28,3 +27,6 @@ workflow:
         space-explorer:
             target: typescript
             source: SpaceExplorer-OAS
+            publish:
+                npm:
+                    token: $npm_token

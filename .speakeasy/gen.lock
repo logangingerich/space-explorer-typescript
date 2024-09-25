@@ -9,6 +9,7 @@ management:
   configChecksum: f577ac3a734a35d402f2794f79be31b9
   repoURL: https://github.com/logangingerich/space-explorer-typescript.git
   installationURL: https://github.com/logangingerich/space-explorer-typescript
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
