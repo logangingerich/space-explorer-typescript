@@ -12,3 +12,6 @@ targets:
     space-explorer:
         target: typescript
         source: SpaceExplorer-OAS
+        publish:
+            npm:
+                token: $npm_token

@@ -100,8 +100,9 @@ const spaceExplorer = new SpaceExplorer({
 
 async function run() {
   const result = await spaceExplorer.missions.create({
-    name: "<value>",
-    status: "ongoing",
+    name: "Saturn Exploration",
+    status: "planned",
+    launchDate: new Date("2025-05-20T10:00:00Z"),
     crew: [
       {
         id: "astro_67890",
@@ -134,8 +135,9 @@ const spaceExplorer = new SpaceExplorerCore({
 
 async function run() {
   const res = await missionsCreate(spaceExplorer, {
-    name: "<value>",
-    status: "ongoing",
+    name: "Saturn Exploration",
+    status: "planned",
+    launchDate: new Date("2025-05-20T10:00:00Z"),
     crew: [
       {
         id: "astro_67890",

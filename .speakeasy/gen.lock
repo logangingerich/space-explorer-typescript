@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: 667d49a1-a40f-4a93-af11-29914386485a
 management:
-  docChecksum: 73a8d54c1f1bc4bbfb1760891a810230
+  docChecksum: 2f3c3f022513adf244d65d4daac30644
   docVersion: 1.0.0
-  speakeasyVersion: 1.402.12
-  generationVersion: 2.422.15
-  releaseVersion: 0.1.0
-  configChecksum: 448cd45c18f17cb77a82201579294190
+  speakeasyVersion: 1.402.14
+  generationVersion: 2.422.22
+  releaseVersion: 0.1.1
+  configChecksum: f577ac3a734a35d402f2794f79be31b9
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.6
+    core: 3.17.7
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
@@ -138,6 +138,22 @@ examples:
       responses:
         "201":
           application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+        "400":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+    createMissionExample:
+      requestBody:
+        application/json: {"name": "Saturn Exploration", "status": "planned", "launchDate": "2025-05-20T10:00:00Z", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+      responses:
+        "201":
+          application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": [{"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}, {"id": "astro_67890", "name": "Jane Doe", "role": "Commander"}]}
+        "400":
+          application/json: {"code": 400, "message": "Invalid request parameters"}
+    terraformExample:
+      requestBody:
+        application/json: {"name": "<value>", "status": "ongoing", "crew": []}
+      responses:
+        "201":
+          application/json: {"id": "mission_12345", "name": "Mars Exploration", "status": "ongoing", "launchDate": "2024-07-16T19:20:30+01:00", "crew": []}
         "400":
           application/json: {"code": 400, "message": "Invalid request parameters"}
   getMission:

@@ -67,6 +67,32 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NewMission'
+            examples:
+              createMissionExample:
+                summary: JSON example to create a mission
+                value:
+                  name: "Saturn Exploration"
+                  status: "planned"
+                  launchDate: "2025-05-20T10:00:00Z"
+              terraformExample:
+                summary: Terraform example to create a mission
+                value: |
+                  provider "restapi" {
+                    uri = "https://api.space-explorer.com/v1"
+                    headers = {
+                      "X-API-Key" = var.api_key
+                    }
+                  }
+
+                  resource "restapi_object" "mission" {
+                    path   = "/missions"
+                    method = "POST"
+                    data   = jsonencode({
+                      name       = "Saturn Exploration"
+                      status     = "planned"
+                      launchDate = "2025-05-20T10:00:00Z"
+                    })
+                  }
       responses:
         '201':
           description: Mission created successfully
