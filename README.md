@@ -48,25 +48,25 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 ### NPM
 
 ```bash
-npm add https://github.com/logangingerich/space-explorer-typescript
+npm add space-explorer
 ```
 
 ### PNPM
 
 ```bash
-pnpm add https://github.com/logangingerich/space-explorer-typescript
+pnpm add space-explorer
 ```
 
 ### Bun
 
 ```bash
-bun add https://github.com/logangingerich/space-explorer-typescript
+bun add space-explorer
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/logangingerich/space-explorer-typescript zod
+yarn add space-explorer zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.

@@ -2,16 +2,17 @@ speakeasyVersion: 1.402.14
 sources:
     SpaceExplorer-OAS:
         sourceNamespace: space-explorer-oas
-        sourceRevisionDigest: sha256:8baa8eb14673f35b556a76cbae0e8e6a28b31c13c6627817a1224da5303eec0c
-        sourceBlobDigest: sha256:e94420b8a3e9eba86e7f2dae7be877c0d64175fad299c36d7bc2bd556f97de71
+        sourceRevisionDigest: sha256:eccd7f184ea690b34dbc05e6df9cc22bbed72c75823d848162525241221d2718
+        sourceBlobDigest: sha256:73057474ade12ba4bfeb64f9543f73a7a57c9d84fe81ba1570b1bcaf827ddd75
         tags:
             - latest
+            - main
 targets:
     space-explorer:
         source: SpaceExplorer-OAS
         sourceNamespace: space-explorer-oas
-        sourceRevisionDigest: sha256:8baa8eb14673f35b556a76cbae0e8e6a28b31c13c6627817a1224da5303eec0c
-        sourceBlobDigest: sha256:e94420b8a3e9eba86e7f2dae7be877c0d64175fad299c36d7bc2bd556f97de71
+        sourceRevisionDigest: sha256:eccd7f184ea690b34dbc05e6df9cc22bbed72c75823d848162525241221d2718
+        sourceBlobDigest: sha256:73057474ade12ba4bfeb64f9543f73a7a57c9d84fe81ba1570b1bcaf827ddd75
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
